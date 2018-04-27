@@ -1,23 +1,35 @@
 package model.mail;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by elien on 27.04.2018.
  */
 public class Message {
 
-    private String bcc;
     private String body;
-    private String cc;
+    private List<String> cc = new ArrayList<String>();
     private String from;
-    private String to;
+    private List<String> to = new ArrayList<String>();
     private String subject;
 
-    public String getBcc() {
-        return bcc;
+    public Message(){
+
     }
 
-    public void setBcc(String bcc) {
-        this.bcc = bcc;
+    public Message(String from, String to, String subject, String body){
+        this.from = from;
+        this.to.add(to);
+        this.subject = subject;
+        this.body = body;
+    }
+
+    public Message(String from, List<String> to, String subject, String body){
+        this.from = from;
+        this.to = to;
+        this.subject = subject;
+        this.body = body;
     }
 
     public String getBody() {
@@ -28,12 +40,16 @@ public class Message {
         this.body = body;
     }
 
-    public String getCc() {
+    public List<String> getCc() {
         return cc;
     }
 
-    public void setCc(String cc) {
-        this.cc = cc;
+    public void setCc(List<String> cc) {
+        this.cc.addAll(cc);
+    }
+
+    public void addCc(String cc) {
+        this.cc.add(cc);
     }
 
     public String getFrom() {
@@ -44,12 +60,16 @@ public class Message {
         this.from = from;
     }
 
-    public String getTo() {
+    public List<String> getTo() {
         return to;
     }
 
-    public void setTo(String to) {
+    public void setTo(List<String> to) {
         this.to = to;
+    }
+
+    public void addTo(String to){
+        this.to.add(to);
     }
 
     public String getSubject() {

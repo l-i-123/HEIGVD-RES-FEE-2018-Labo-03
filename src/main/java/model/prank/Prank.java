@@ -3,6 +3,7 @@ package model.prank;
 import model.mail.Message;
 import model.mail.Person;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,12 +12,16 @@ import java.util.List;
 public class Prank {
 
     private Message message;
-    private List<Person> victimRecipients;
+    private List<Person> victimRecipients = new ArrayList<Person>();
     private Person victimeSender;
-    private List<Person> witnessRecipient;
+    private List<Person> witnessRecipient = new ArrayList<Person>();
 
-    public void addVictimRecipients(){
+    public void addVictimRecipients(Person victim){
+        victimRecipients.add(victim);
+    }
 
+    public void addVictimRecipients(List<Person> victims){
+        victimRecipients.addAll(victims);
     }
 
     public void addWitnessRecipients(){
@@ -43,7 +48,7 @@ public class Prank {
 
     }
 
-    public void setVictimSender(VictimSender victimSender){
+    //public void setVictimSender(VictimSender victimSender){
 
-    }
+   // }
 }
