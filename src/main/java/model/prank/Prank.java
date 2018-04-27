@@ -3,6 +3,7 @@ package model.prank;
 import model.mail.Message;
 import model.mail.Person;
 
+import java.io.BufferedReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,12 +41,28 @@ public class Prank {
 
     }
 
-    public void getWitnessrecipients(){
-
+    public List<Person> getWitnessrecipients(){
+        return victimRecipients;
     }
 
     public void setMessage(Message message){
 
+    }
+
+    public int importVictim(BufferedReader reader){
+        String line;
+        Person person;
+        int compteur = 0;
+        try{
+            while((line = reader.readLine()) != null){
+                person = new Person(line);
+                addVictimRecipients(person);
+                compteur++;
+            }
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        return compteur;
     }
 
     //public void setVictimSender(VictimSender victimSender){

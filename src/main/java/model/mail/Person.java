@@ -15,6 +15,10 @@ public class Person {
         this.lastName = lastName;
     }
 
+    public Person(String address){
+        this.address = address;
+    }
+
     public String getFirstName() {
         return firstName;
     }
