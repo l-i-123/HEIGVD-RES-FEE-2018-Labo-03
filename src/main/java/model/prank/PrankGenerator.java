@@ -25,7 +25,7 @@ public class PrankGenerator {
     }
 
     public void generateGroup(){
-        
+
     }
 
     public void generatePrank(){
