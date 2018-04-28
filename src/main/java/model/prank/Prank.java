@@ -3,7 +3,7 @@ package model.prank;
 import model.mail.Message;
 import model.mail.Person;
 
-import java.io.BufferedReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,60 +12,73 @@ import java.util.List;
  */
 public class Prank {
 
-    private Message message;
+    private List<Message> message = new ArrayList<>();
     private List<Person> victimRecipients = new ArrayList<Person>();
-    private Person victimeSender;
     private List<Person> witnessRecipient = new ArrayList<Person>();
+    private Reader reader;
 
-    public void addVictimRecipients(Person victim){
-        victimRecipients.add(victim);
+    public List<Message> generateMessage(){
+        message.clear();
+        try {
+            reader = new InputStreamReader(new FileInputStream("message.txt"), "UTF-8");
+            BufferedReader body = new BufferedReader(reader);
+            String line;
+            StringBuilder messageToSend = new StringBuilder();
+
+            while ((line = body.readLine()) != null){
+                if(line.startsWith("===")){
+                    message.add(new Message(messageToSend.toString()));
+                    messageToSend = new StringBuilder();
+                }
+                messageToSend.append(line);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return message;
     }
 
-    public void addVictimRecipients(List<Person> victims){
-        victimRecipients.addAll(victims);
-    }
+    public List<Person> generateVictimRecipient(){
+        victimRecipients.clear();
+        try{
+            reader = new InputStreamReader(new FileInputStream("victims_recipient.txt"), "UTF-8");
+            BufferedReader body = new BufferedReader(reader);
+            String line;
 
-    public void addWitnessRecipients(){
-
-    }
-
-    public void generateMailMessage(){
-
-    }
-
-    public void getMessage(){
-
-    }
-
-    public void getVictimRecipient(){
-
-    }
-
-    public List<Person> getWitnessrecipients(){
+            while((line = body.readLine()) != null){
+                victimRecipients.add(new Person(line));
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
         return victimRecipients;
     }
 
-    public void setMessage(Message message){
-
-    }
-
-    public int importVictim(BufferedReader reader){
-        String line;
-        Person person;
-        int compteur = 0;
+    public List<Person> generateWitnessRecipient(){
+        witnessRecipient.clear();
         try{
-            while((line = reader.readLine()) != null){
-                person = new Person(line);
-                addVictimRecipients(person);
-                compteur++;
+            reader = new InputStreamReader(new FileInputStream("witness_recipient.txt"), "UTF-8");
+            BufferedReader body = new BufferedReader(reader);
+            String line;
+
+            while((line = body.readLine()) != null){
+                witnessRecipient.add(new Person(line));
             }
-        }catch(Exception e){
+        }catch (Exception e){
             System.out.println(e);
         }
-        return compteur;
+        return witnessRecipient;
     }
 
-    //public void setVictimSender(VictimSender victimSender){
+    public List<Message> getMessage(){
+        return  message;
+    }
 
-   // }
+    public List<Person> getVictimRecipient(){
+        return victimRecipients;
+    }
+
+    public List<Person> getWitnessrecipients(){
+        return witnessRecipient;
+    }
 }

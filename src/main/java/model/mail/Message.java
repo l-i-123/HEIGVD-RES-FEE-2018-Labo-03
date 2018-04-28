@@ -14,8 +14,8 @@ public class Message {
     private List<String> to = new ArrayList<String>();
     private String subject;
 
-    public Message(){
-
+    public Message(String body){
+        this.body = body;
     }
 
     public Message(String from, String to, String subject, String body){
