@@ -45,7 +45,7 @@ public class PrankGenerator {
         int compteur = 0;
 
         if((nbVictimByGroup < NB_MIN_VICTIMS_BY_GROUP) || (nbGroupe > messages.size())){
-            throw new Exception("Nombre insuffisant de victime ou nombre de message insuffisant");
+            throw new Exception("Nombre insuffisants de victime ou nombre de messages insuffisant");
         }
         else{
             for (int i = 0; i < nbGroupe; i++){
