@@ -25,6 +25,7 @@ public class PrankGenerator {
     private Message message;
     private List<Message> mailToSend = new ArrayList<>();
     SmtpClient smtp;
+    private static final int NB_MIN_VICTIMS_BY_GROUP = 2;
 
     public PrankGenerator(SmtpClient smtp){
         this.smtp = smtp;
@@ -40,7 +41,7 @@ public class PrankGenerator {
         int nbVictimByGroup = ((victimRecipient.size() - nbGroupe) / nbGroupe);
         Message messageTemp;
 
-        if((nbVictimByGroup < nbGroupe) || (nbGroupe > messages.size())){
+        if((nbVictimByGroup < NB_MIN_VICTIMS_BY_GROUP) || (nbGroupe > messages.size())){
             throw new Exception("Il n'y a pas assez de victime par rapport au nombre de groupe");
         }
         else{

@@ -1,6 +1,4 @@
 import config.Protocol;
-import model.mail.Message;
-import model.prank.Prank;
 import model.prank.PrankGenerator;
 import smtp.SmtpClient;
 

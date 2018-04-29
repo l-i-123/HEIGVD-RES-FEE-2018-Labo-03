@@ -8,5 +8,5 @@ public class Protocol {
     public final static int DEFAULT_PORT = 2525;
     public final static String IP_ADDRESS = "localhost";
 
-    public final static int NB_GROUP = 2;
+    public final static int NB_GROUP = 3;
 }
