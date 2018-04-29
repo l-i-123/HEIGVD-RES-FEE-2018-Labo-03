@@ -1,4 +1,4 @@
-Subject: Ma moyenne
+SUBJECT: Ma moyenne
 
 Bonjour,
 
@@ -7,7 +7,7 @@ Pouvez-vous remonter ma moyenne s'il vous plait.
 En vous remerciant d'avance.
 
 ===
-Subject: test
+SUBJECT: test
 
 Salut,
 
@@ -16,7 +16,7 @@ Ce message est un test.
 A+
 
 ===
-Subject: Ma passion
+SUBJECT: Ma passion
 
 Ecrire des mail c'est ma passion !!!!!
 

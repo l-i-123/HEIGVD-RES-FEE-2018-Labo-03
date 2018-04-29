@@ -14,6 +14,10 @@ public class Message {
     private List<String> to = new ArrayList<String>();
     private String subject;
 
+    public Message(){
+
+    }
+
     public Message(String body){
         this.body = body;
     }
@@ -67,6 +71,11 @@ public class Message {
     public void setTo(List<String> to) {
         this.to = to;
     }
+
+    public void setTo(String to) {
+        this.to.add(to);
+    }
+
 
     public void addTo(String to){
         this.to.add(to);

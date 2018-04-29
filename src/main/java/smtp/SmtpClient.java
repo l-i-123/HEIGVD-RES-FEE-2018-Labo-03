@@ -21,7 +21,6 @@ public class SmtpClient {
     private PrintWriter writer;
     String line;
 
-
     public SmtpClient(String smtpServerAddress, int smtpServerPort){
         this.smtpServerAddress = smtpServerAddress;
         this.smtpServerPort = smtpServerPort;
@@ -99,12 +98,19 @@ public class SmtpClient {
             writer.write("\r\n");
             writer.flush();
             retourServeur(reader.readLine());
-
-            socket.close();
-
         }
         catch(Exception e){
             System.out.println(e);
+        }
+        finally {
+            try{
+                reader.close();
+                writer.close();
+                socket.close();
+            }catch(IOException e){
+                System.out.println(e);
+            }
+
         }
     }
 

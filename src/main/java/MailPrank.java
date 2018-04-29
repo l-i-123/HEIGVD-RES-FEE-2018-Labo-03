@@ -1,5 +1,7 @@
 import config.Protocol;
 import model.mail.Message;
+import model.prank.Prank;
+import model.prank.PrankGenerator;
 import smtp.SmtpClient;
 
 /**
@@ -12,9 +14,13 @@ public class MailPrank {
 
         SmtpClient smtp = new SmtpClient(Protocol.IP_ADDRESS, Protocol.DEFAULT_PORT);
 
-        Message message = new Message("elie@elie.com", "elie1.salut.com", "test", "Bonjour comment allez-vous");
+        PrankGenerator prank = new PrankGenerator(smtp);
 
-        smtp.sendMessage(message);
-
+        try {
+            prank.generateGroup();
+            prank.generatePrank();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
