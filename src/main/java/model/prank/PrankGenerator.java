@@ -38,26 +38,32 @@ public class PrankGenerator {
         Iterator<Person> victimsIterator = victimRecipient.iterator();
         Iterator<Message> messageIterator = messages.iterator();
         int nbGroupe = Protocol.NB_GROUP;
-        int nbVictimByGroup = ((victimRecipient.size() - nbGroupe) / nbGroupe);
+        int nbVictimeTotal = victimRecipient.size();
+        int nbVictimByGroup = ((nbVictimeTotal - nbGroupe) / nbGroupe);
+
         Message messageTemp;
+        int compteur = 0;
 
         if((nbVictimByGroup < NB_MIN_VICTIMS_BY_GROUP) || (nbGroupe > messages.size())){
-            throw new Exception("Il n'y a pas assez de victime par rapport au nombre de groupe");
+            throw new Exception("Nombre insuffisant de victime ou nombre de message insuffisant");
         }
         else{
-
             for (int i = 0; i < nbGroupe; i++){
                 messageTemp = messageIterator.next();
                 message = new Message();
                 message.setFrom(victimsIterator.next().getAddress());
+
                 for(int j = 0; j < nbVictimByGroup; j++){
                     message.setTo(victimsIterator.next().getAddress());
                 }
+                if((nbVictimeTotal - compteur) % nbGroupe !=0){
+                    message.addTo(victimsIterator.next().getAddress());
+                    compteur++;
+                }
+
                 message.setBody(messageTemp.getBody());
                 message.setSubject(messageTemp.getSubject());
-                if(victimsIterator.hasNext() && (i == nbGroupe - 1)){
-                    message.addTo(victimsIterator.next().getAddress());
-                }
+
                 message.setCc(witnessRecipient.stream().map(Person::getAddress).collect(Collectors.toList()));
                 mailToSend.add(message);
             }

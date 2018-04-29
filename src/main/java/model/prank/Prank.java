@@ -26,7 +26,7 @@ public class Prank {
             String line;
             String subject = "";
             StringBuilder messageToSend = new StringBuilder();
-            Message message = new Message();
+            Message message;
 
             while ((line = body.readLine()) != null){
                 if(line.startsWith("===")){
