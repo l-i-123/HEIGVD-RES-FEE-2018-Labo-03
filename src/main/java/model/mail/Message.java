@@ -22,19 +22,6 @@ public class Message {
         this.body = body;
     }
 
-    public Message(String from, String to, String subject, String body){
-        this.from = from;
-        this.to.add(to);
-        this.subject = subject;
-        this.body = body;
-    }
-
-    public Message(String from, List<String> to, String subject, String body){
-        this.from = from;
-        this.to = to;
-        this.subject = subject;
-        this.body = body;
-    }
 
     public String getBody() {
         return body;
@@ -52,9 +39,6 @@ public class Message {
         this.cc.addAll(cc);
     }
 
-    public void addCc(String cc) {
-        this.cc.add(cc);
-    }
 
     public String getFrom() {
         return from;
@@ -68,14 +52,9 @@ public class Message {
         return to;
     }
 
-    public void setTo(List<String> to) {
-        this.to = to;
-    }
-
     public void setTo(String to) {
         this.to.add(to);
     }
-
 
     public void addTo(String to){
         this.to.add(to);
@@ -88,6 +67,5 @@ public class Message {
     public void setSubject(String subject) {
         this.subject = subject;
     }
-
 
 }

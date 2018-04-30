@@ -109,16 +109,4 @@ public class Prank {
         }
         return witnessRecipient;
     }
-
-    public List<Message> getMessage(){
-        return  messages;
-    }
-
-    public List<Person> getVictimRecipient(){
-        return victimRecipients;
-    }
-
-    public List<Person> getWitnessrecipients(){
-        return witnessRecipient;
-    }
 }
