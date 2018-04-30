@@ -16,12 +16,13 @@ public class Prank {
     private List<Person> victimRecipients = new ArrayList<Person>();
     private List<Person> witnessRecipient = new ArrayList<Person>();
     private Reader reader;
-    private String absolutPath = "D:/HEIG-VD/Informatique/RES/HEIGVD-RES-FEE-2018-Labo-03/src/main/java/config";
+    private String absolutPath = "config" + File.separator;
 
     public List<Message> generateMessage(){
         messages.clear();
         try {
-            reader = new InputStreamReader(new FileInputStream(absolutPath + "/messages.txt"), "UTF-8");
+
+            reader = new InputStreamReader(new FileInputStream(absolutPath + "messages.txt"), "UTF-8");
             BufferedReader body = new BufferedReader(reader);
             String line;
             String subject = "";
@@ -61,7 +62,7 @@ public class Prank {
     public List<Person> generateVictimRecipient(){
         victimRecipients.clear();
         try{
-            reader = new InputStreamReader(new FileInputStream(absolutPath + "/victims_recipient.txt"), "UTF-8");
+            reader = new InputStreamReader(new FileInputStream(absolutPath + "victims_recipient.txt"), "UTF-8");
             BufferedReader body = new BufferedReader(reader);
             String line;
 
@@ -87,7 +88,7 @@ public class Prank {
     public List<Person> generateWitnessRecipient(){
         witnessRecipient.clear();
         try{
-            reader = new InputStreamReader(new FileInputStream(absolutPath + "/witness_recipient.txt"), "UTF-8");
+            reader = new InputStreamReader(new FileInputStream(absolutPath + "witness_recipient.txt"), "UTF-8");
             BufferedReader body = new BufferedReader(reader);
             String line;
 
